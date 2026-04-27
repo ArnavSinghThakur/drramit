@@ -1,0 +1,1504 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dr. Ramit Mahajan — Gastroenterologist, Ludhiana</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* ═══════════════════════════════════════
+   TOKENS
+═══════════════════════════════════════ */
+      :root {
+        --forest: #1a3a2a;
+        --sage: #4a7c59;
+        --gold: #b89a5a;
+        --gold-lt: #d4b87a;
+        --cream: #f5f0e8;
+        --ivory: #faf8f3;
+        --char: #2c2c2c;
+        --muted: #6b6b6b;
+        --border: rgba(26, 58, 42, 0.12);
+        --wa: #25d366;
+        --r: 8px;
+        --sh: 0 2px 16px rgba(26, 58, 42, 0.09);
+      }
+
+      /* ═══════════════════════════════════════
+   RESET
+═══════════════════════════════════════ */
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+        -webkit-text-size-adjust: 100%;
+      }
+      body {
+        font-family: "DM Sans", sans-serif;
+        background: var(--ivory);
+        color: var(--char);
+        line-height: 1.7;
+        overflow-x: hidden;
+        padding-bottom: 76px; /* room for sticky bar */
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      /* ═══════════════════════════════════════
+   STICKY BOTTOM BAR  ← mobile killer
+═══════════════════════════════════════ */
+      .sbb {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 300;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 0;
+        background: #fff;
+        border-top: 1px solid var(--border);
+        box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
+        padding: 0.55rem 0.7rem calc(0.55rem + env(safe-area-inset-bottom));
+        gap: 0.5rem;
+      }
+      .sbb a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        padding: 0.6rem 0.3rem;
+        border-radius: var(--r);
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        -webkit-tap-highlight-color: transparent;
+        transition: opacity 0.15s;
+        text-decoration: none;
+      }
+      .sbb a:active {
+        opacity: 0.75;
+        transform: scale(0.97);
+      }
+      .sbb-call {
+        background: var(--forest);
+        color: #fff !important;
+      }
+      .sbb-wa {
+        background: var(--wa);
+        color: #fff !important;
+      }
+      .sbb-appt {
+        background: var(--gold);
+        color: #fff !important;
+      }
+
+      /* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 200;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.85rem 1rem;
+        background: rgba(250, 248, 243, 0.96);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid var(--border);
+      }
+      .nav-brand {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1rem;
+        font-weight: 600;
+        color: var(--forest);
+        line-height: 1.2;
+      }
+      .nav-brand small {
+        display: block;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.63rem;
+        font-weight: 400;
+        color: var(--muted);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+      .nav-pmc {
+        font-size: 0.68rem;
+        color: var(--muted);
+        background: var(--cream);
+        padding: 0.28rem 0.65rem;
+        border-radius: 20px;
+        border: 1px solid var(--border);
+        white-space: nowrap;
+      }
+      /* desktop nav links — hidden by default */
+      .nav-dlinks {
+        display: none;
+        gap: 2rem;
+        list-style: none;
+      }
+      .nav-dlinks a {
+        font-size: 0.78rem;
+        font-weight: 500;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--muted);
+        transition: color 0.2s;
+      }
+      .nav-dlinks a:hover {
+        color: var(--forest);
+      }
+      .nav-dlinks .nda {
+        background: var(--forest);
+        color: #fff !important;
+        padding: 0.45rem 1.1rem;
+        border-radius: 4px;
+      }
+
+      /* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+      .hero {
+        background: linear-gradient(
+          155deg,
+          var(--forest) 0%,
+          #2d5a3f 60%,
+          #3a7050 100%
+        );
+        color: #fff;
+        padding: 2rem 1.1rem 2.4rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            ellipse at 85% 15%,
+            rgba(184, 154, 90, 0.2) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse at 15% 85%,
+            rgba(74, 124, 89, 0.22) 0%,
+            transparent 50%
+          );
+      }
+      .hi {
+        position: relative;
+        z-index: 1;
+      }
+
+      /* avatar */
+      .h-av {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.22);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+      }
+      .h-av-i {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.9rem;
+        font-weight: 300;
+        color: rgba(255, 255, 255, 0.65);
+      }
+
+      .h-ey {
+        font-size: 0.67rem;
+        font-weight: 500;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+        color: var(--gold-lt);
+        margin-bottom: 0.45rem;
+      }
+      .h-nm {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 2.4rem;
+        font-weight: 300;
+        line-height: 1.06;
+        margin-bottom: 0.25rem;
+      }
+      .h-nm em {
+        font-style: italic;
+        color: var(--gold-lt);
+      }
+      .h-rl {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.68);
+        margin-bottom: 0.2rem;
+      }
+      .h-dp {
+        font-size: 0.76rem;
+        color: var(--gold-lt);
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        margin-bottom: 1.1rem;
+      }
+
+      /* qual pills */
+      .h-qp {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-bottom: 1.4rem;
+      }
+      .qp {
+        font-size: 0.65rem;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        color: rgba(255, 255, 255, 0.82);
+        padding: 0.22rem 0.6rem;
+        border-radius: 20px;
+        white-space: nowrap;
+      }
+
+      /* stats */
+      .h-st {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--r);
+        overflow: hidden;
+      }
+      .st {
+        text-align: center;
+        padding: 0.85rem 0.4rem;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .st:last-child {
+        border-right: none;
+      }
+      .stn {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        font-weight: 300;
+        color: var(--gold-lt);
+        display: block;
+        line-height: 1;
+      }
+      .stl {
+        font-size: 0.6rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.5);
+        display: block;
+        margin-top: 0.18rem;
+      }
+
+      /* ═══════════════════════════════════════
+   QUICK ACTION STRIP
+═══════════════════════════════════════ */
+      .qas {
+        background: var(--cream);
+        border-bottom: 1px solid var(--border);
+        padding: 0.9rem 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+      .qa-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+      }
+      .qa-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        padding: 0.82rem;
+        border-radius: var(--r);
+        font-size: 0.82rem;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent;
+        transition: opacity 0.15s;
+      }
+      .qa-btn:active {
+        opacity: 0.8;
+      }
+      .qa-c {
+        background: var(--forest);
+        color: #fff;
+      }
+      .qa-w {
+        background: var(--wa);
+        color: #fff;
+      }
+      .qa-hrs {
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--r);
+        padding: 0.7rem 0.9rem;
+        font-size: 0.78rem;
+      }
+      .hrs-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: #f59e0b;
+        flex-shrink: 0;
+      }
+      .hrs-t strong {
+        color: var(--forest);
+      }
+
+      /* ═══════════════════════════════════════
+   SECTIONS
+═══════════════════════════════════════ */
+      .sec {
+        padding: 2rem 1.1rem;
+      }
+      .sec-cream {
+        background: var(--cream);
+      }
+      .sec-dark {
+        background: var(--forest);
+        color: #fff;
+      }
+
+      .sl {
+        font-size: 0.66rem;
+        font-weight: 500;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+        color: var(--gold);
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        margin-bottom: 0.55rem;
+      }
+      .sl::before {
+        content: "";
+        width: 18px;
+        height: 1px;
+        background: currentColor;
+        flex-shrink: 0;
+      }
+      .sec-dark .sl {
+        color: var(--gold-lt);
+      }
+      .sh {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.85rem;
+        font-weight: 300;
+        line-height: 1.15;
+        color: var(--forest);
+        margin-bottom: 1.1rem;
+      }
+      .sh em {
+        font-style: italic;
+        color: var(--sage);
+      }
+      .sec-dark .sh {
+        color: #fff;
+      }
+      .sec-dark .sh em {
+        color: var(--gold-lt);
+      }
+
+      /* ═══════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════ */
+      .at {
+        font-size: 0.91rem;
+        color: var(--char);
+        line-height: 1.85;
+        opacity: 0.9;
+        margin-bottom: 0.9rem;
+      }
+      .aq {
+        background: var(--forest);
+        color: var(--cream);
+        padding: 1.3rem 1.3rem 1.3rem 1.7rem;
+        border-radius: var(--r);
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.05rem;
+        font-style: italic;
+        font-weight: 300;
+        line-height: 1.65;
+        margin-top: 1.4rem;
+        position: relative;
+      }
+      .aq::before {
+        content: '"';
+        font-size: 3.2rem;
+        line-height: 1;
+        opacity: 0.15;
+        position: absolute;
+        top: 0.2rem;
+        left: 1rem;
+      }
+
+      /* ═══════════════════════════════════════
+   EXPERTISE
+═══════════════════════════════════════ */
+      .eg {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.65rem;
+        margin-top: 0.4rem;
+      }
+      .ec {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--r);
+        padding: 1rem 0.9rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .ec::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: var(--gold);
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 0.3s;
+      }
+      .ec:hover::after {
+        transform: scaleX(1);
+      }
+      .ei {
+        font-size: 1.4rem;
+        margin-bottom: 0.4rem;
+      }
+      .ec h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.92rem;
+        font-weight: 600;
+        color: var(--forest);
+        margin-bottom: 0.25rem;
+        line-height: 1.3;
+      }
+      .ec p {
+        font-size: 0.73rem;
+        color: var(--muted);
+        line-height: 1.55;
+      }
+
+      /* ═══════════════════════════════════════
+   RESEARCH
+═══════════════════════════════════════ */
+      .rsg {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.6rem;
+        margin: 1rem 0;
+      }
+      .rsc {
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--r);
+        padding: 0.9rem;
+        text-align: center;
+      }
+      .rsn {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.9rem;
+        font-weight: 300;
+        color: var(--gold-lt);
+        display: block;
+        line-height: 1;
+      }
+      .rsl {
+        font-size: 0.62rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(255, 255, 255, 0.48);
+        display: block;
+        margin-top: 0.25rem;
+      }
+      .jc {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        margin-top: 0.9rem;
+      }
+      .jch {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        background: rgba(255, 255, 255, 0.07);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 20px;
+        font-size: 0.68rem;
+        padding: 0.28rem 0.7rem;
+        color: rgba(255, 255, 255, 0.72);
+      }
+      .jch .d {
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--gold-lt);
+        flex-shrink: 0;
+      }
+      .rl {
+        list-style: none;
+        margin-top: 1.1rem;
+      }
+      .rl li {
+        font-size: 0.82rem;
+        color: rgba(255, 255, 255, 0.76);
+        padding: 0.65rem 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        display: flex;
+        align-items: flex-start;
+        gap: 0.6rem;
+      }
+      .rl li::before {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--gold-lt);
+        flex-shrink: 0;
+        margin-top: 0.55em;
+      }
+
+      /* ═══════════════════════════════════════
+   REVIEWS
+═══════════════════════════════════════ */
+      .rvg {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 0.9rem;
+      }
+      .rvc {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--r);
+        padding: 1.15rem;
+      }
+      .rvs {
+        color: #f5c518;
+        font-size: 0.88rem;
+        letter-spacing: 2px;
+        margin-bottom: 0.55rem;
+      }
+      .rvt {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.05rem;
+        font-style: italic;
+        color: var(--forest);
+        line-height: 1.65;
+        margin-bottom: 0.55rem;
+      }
+      .rvsrc {
+        font-size: 0.7rem;
+        color: var(--muted);
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      /* ═══════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════ */
+      .ca {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.65rem;
+        margin-bottom: 1.3rem;
+      }
+      .ca a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        padding: 0.88rem;
+        border-radius: var(--r);
+        font-size: 0.82rem;
+        font-weight: 600;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .ca-c {
+        background: var(--forest);
+        color: #fff;
+      }
+      .ca-w {
+        background: var(--wa);
+        color: #fff;
+      }
+
+      .ic {
+        display: grid;
+        gap: 0.6rem;
+        margin-bottom: 1.3rem;
+      }
+      .icd {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--r);
+        padding: 0.9rem;
+      }
+      .ico {
+        width: 36px;
+        height: 36px;
+        flex-shrink: 0;
+        background: var(--forest);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .icl {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        margin-bottom: 0.18rem;
+      }
+      .icv {
+        font-size: 0.86rem;
+        color: var(--char);
+        line-height: 1.5;
+      }
+      .icv a {
+        color: var(--sage);
+      }
+
+      .mw {
+        border-radius: var(--r);
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: var(--sh);
+        margin-bottom: 0.55rem;
+      }
+      .ml {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        font-size: 0.78rem;
+        color: var(--sage);
+        margin-bottom: 1.4rem;
+      }
+
+      /* form */
+      .af {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: var(--r);
+        padding: 1.3rem;
+        box-shadow: var(--sh);
+      }
+      .af h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.3rem;
+        font-weight: 300;
+        color: var(--forest);
+        margin-bottom: 1.1rem;
+      }
+      .fg {
+        margin-bottom: 0.9rem;
+      }
+      .fg label {
+        display: block;
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 0.32rem;
+      }
+      .fg input,
+      .fg select,
+      .fg textarea {
+        width: 100%;
+        padding: 0.82rem 0.95rem;
+        border: 1.5px solid var(--border);
+        border-radius: var(--r);
+        background: var(--ivory);
+        font-family: "DM Sans", sans-serif;
+        font-size: 1rem;
+        color: var(--char);
+        -webkit-appearance: none;
+        outline: none;
+        transition: border-color 0.2s;
+      }
+      .fg input:focus,
+      .fg select:focus,
+      .fg textarea:focus {
+        border-color: var(--sage);
+        background: #fff;
+      }
+      .fg textarea {
+        resize: vertical;
+        min-height: 88px;
+      }
+      .fs {
+        width: 100%;
+        background: var(--forest);
+        color: #fff;
+        border: none;
+        padding: 1rem;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        border-radius: var(--r);
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        margin-top: 0.25rem;
+        transition: background 0.2s;
+      }
+      .fs:active {
+        background: var(--sage);
+      }
+      .fa {
+        margin-top: 0.9rem;
+        padding-top: 0.9rem;
+        border-top: 1px solid var(--border);
+        text-align: center;
+        font-size: 0.76rem;
+        color: var(--muted);
+      }
+      .fa a {
+        font-weight: 600;
+      }
+
+      /* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+      footer {
+        background: var(--char);
+        color: rgba(255, 255, 255, 0.42);
+        padding: 1.7rem 1.1rem;
+        text-align: center;
+        font-size: 0.77rem;
+        line-height: 2;
+      }
+      footer strong {
+        display: block;
+        font-family: "Cormorant Garamond", serif;
+        font-size: 0.98rem;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.8);
+        margin-bottom: 0.2rem;
+      }
+      footer a {
+        color: var(--wa);
+      }
+      footer .fe {
+        color: rgba(255, 255, 255, 0.42);
+      }
+
+      /* ═══════════════════════════════════════
+   TABLET ≥ 640px
+═══════════════════════════════════════ */
+      @media (min-width: 640px) {
+        body {
+          padding-bottom: 0;
+        }
+        .sbb {
+          display: none;
+        }
+        nav {
+          padding: 1rem 2rem;
+        }
+        .hero {
+          padding: 2.8rem 2.5rem;
+        }
+        .h-nm {
+          font-size: 3rem;
+        }
+        .qas {
+          flex-direction: row;
+          align-items: center;
+          padding: 1.2rem 2.5rem;
+        }
+        .qa-row {
+          width: auto;
+        }
+        .qa-hrs {
+          flex: 1;
+        }
+        .sec {
+          padding: 3rem 2.5rem;
+        }
+        .eg {
+          grid-template-columns: repeat(3, 1fr);
+        }
+        .rsg {
+          grid-template-columns: repeat(4, 1fr);
+        }
+        .rvg {
+          grid-template-columns: 1fr 1fr;
+        }
+        .ic {
+          grid-template-columns: 1fr 1fr;
+        }
+        footer {
+          padding: 1.8rem 2.5rem;
+        }
+      }
+
+      /* ═══════════════════════════════════════
+   DESKTOP ≥ 1024px
+═══════════════════════════════════════ */
+      @media (min-width: 1024px) {
+        nav {
+          padding: 1.1rem 4.5rem;
+        }
+        .nav-dlinks {
+          display: flex;
+        }
+        .nav-pmc {
+          display: none;
+        }
+
+        .hero {
+          display: grid;
+          grid-template-columns: 1fr 380px;
+          gap: 4rem;
+          align-items: center;
+          padding: 4rem 4.5rem;
+        }
+        .h-nm {
+          font-size: 3.8rem;
+        }
+
+        .qas {
+          padding: 1rem 4.5rem;
+        }
+        .sec {
+          padding: 4.5rem;
+        }
+        .sec-two {
+          display: grid;
+          grid-template-columns: 1fr 1.4fr;
+          gap: 5rem;
+          align-items: start;
+        }
+
+        .eg {
+          gap: 1px;
+          background: var(--border);
+        }
+        .ec {
+          border-radius: 0;
+          border: none;
+        }
+
+        .contact-layout {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+          align-items: start;
+        }
+        .ic {
+          grid-template-columns: 1fr 1fr;
+        }
+
+        footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          text-align: left;
+          padding: 1.8rem 4.5rem;
+        }
+        footer strong {
+          display: inline;
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- STICKY BOTTOM BAR -->
+    <div class="sbb" role="toolbar" aria-label="Quick contact">
+      <a href="tel:+918360177589" class="sbb-call">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+        >
+          <path
+            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.21 6.21l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17.5z"
+          />
+        </svg>
+        Call
+      </a>
+      <a
+        href="https://wa.me/918360177589?text=Hello%20Dr.%20Mahajan%2C%20I%20would%20like%20to%20book%20an%20appointment."
+        target="_blank"
+        rel="noopener"
+        class="sbb-wa"
+      >
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path
+            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
+          />
+        </svg>
+        WhatsApp
+      </a>
+      <a href="#contact" class="sbb-appt">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.2"
+        >
+          <rect x="3" y="4" width="18" height="18" rx="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+        Appointment
+      </a>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-brand">
+        Dr. Ramit Mahajan
+        <small>Gastroenterology · Ludhiana</small>
+      </div>
+      <ul class="nav-dlinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#contact" class="nda">Book Appointment</a></li>
+      </ul>
+      <div class="nav-pmc">PMC-35491</div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hi">
+        <div class="h-av"><span class="h-av-i">RM</span></div>
+        <div class="h-ey">DMCH · Ludhiana, Punjab</div>
+        <h1 class="h-nm">Dr. Ramit<br /><em>Mahajan</em></h1>
+        <p class="h-rl">Professor, Medical Gastroenterology</p>
+        <p class="h-dp">Gastroenterology &amp; Hepatology</p>
+        <div class="h-qp">
+          <span class="qp">MBBS</span>
+          <span class="qp">MD (Medicine)</span>
+          <span class="qp">DM (Gastroenterology)</span>
+          <span class="qp">Fellowship · Advanced GI Endoscopy</span>
+        </div>
+        <div class="h-st">
+          <div class="st">
+            <span class="stn">815+</span><span class="stl">Citations</span>
+          </div>
+          <div class="st">
+            <span class="stn">10+</span><span class="stl">Yrs Exp.</span>
+          </div>
+          <div class="st">
+            <span class="stn">NEJM</span><span class="stl">Published</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUICK ACTION STRIP -->
+    <div class="qas">
+      <div class="qa-row">
+        <a href="tel:+918360177589" class="qa-btn qa-c">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.2"
+          >
+            <path
+              d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.21 6.21l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17.5z"
+            />
+          </svg>
+          Call Now
+        </a>
+        <a
+          href="https://wa.me/918360177589?text=Hello%20Dr.%20Mahajan%2C%20I%20would%20like%20to%20book%20an%20appointment."
+          target="_blank"
+          rel="noopener"
+          class="qa-btn qa-w"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+            <path
+              d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
+            />
+          </svg>
+          WhatsApp
+        </a>
+      </div>
+      <div class="qa-hrs">
+        <span class="hrs-dot"></span>
+        <span class="hrs-t"
+          >Clinic opens <strong>5 PM</strong> · Call
+          <strong>9am–5pm</strong> for appt · <strong>8360177589</strong></span
+        >
+      </div>
+    </div>
+
+    <!-- ABOUT -->
+    <section class="sec sec-cream" id="about">
+      <div class="sl">About the Doctor</div>
+      <h2 class="sh">A Decade of<br /><em>Expert Care</em></h2>
+      <p class="at">
+        Dr. Ramit Mahajan is Professor of Gastroenterology and Hepatology with
+        over a decade of clinical expertise and research experience. He has made
+        significant contributions through his work in inflammatory bowel
+        disease, fecal microbiota transplantation (FMT), and liver failure
+        management, with research published in the
+        <em>New England Journal of Medicine</em> — receiving over
+        <strong>815 citations</strong>.
+      </p>
+      <p class="at">
+        His clinical expertise spans the full range of gastroenterological
+        conditions — from complex IBD cases needing advanced biologics, to
+        critical liver failure managed with plasmapheresis.
+      </p>
+      <p class="at">
+        Whether handling functional disorders, advanced endoscopy, or acute
+        liver failure, Dr. Mahajan ensures each patient receives individualized
+        care grounded in the latest evidence.
+      </p>
+      <div class="aq">
+        Combining evidence-based care with personalized treatment strategies —
+        so every patient receives individualized attention rooted in the latest
+        science.
+      </div>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section class="sec" id="expertise">
+      <div class="sl">Clinical Expertise</div>
+      <h2 class="sh">Areas of<br /><em>Specialisation</em></h2>
+      <div class="eg">
+        <div class="ec">
+          <div class="ei">🦠</div>
+          <h3>Inflammatory Bowel Disease</h3>
+          <p>
+            Advanced management of Crohn's and ulcerative colitis with biologic
+            &amp; small-molecule therapies.
+          </p>
+        </div>
+        <div class="ec">
+          <div class="ei">🧬</div>
+          <h3>Fecal Microbiota Transplantation</h3>
+          <p>
+            Pioneering FMT therapy for recurrent C. difficile and IBD with
+            published outcomes.
+          </p>
+        </div>
+        <div class="ec">
+          <div class="ei">🫀</div>
+          <h3>Liver Failure Management</h3>
+          <p>
+            Acute &amp; chronic liver failure including plasmapheresis and
+            critical interventions.
+          </p>
+        </div>
+        <div class="ec">
+          <div class="ei">🔬</div>
+          <h3>Advanced GI Endoscopy</h3>
+          <p>
+            Fellowship-trained in therapeutic and diagnostic endoscopic
+            procedures.
+          </p>
+        </div>
+        <div class="ec">
+          <div class="ei">⚕️</div>
+          <h3>Functional GI Disorders</h3>
+          <p>
+            IBS, GERD, functional dyspepsia, and motility disorder management.
+          </p>
+        </div>
+        <div class="ec">
+          <div class="ei">🏥</div>
+          <h3>Hepatology</h3>
+          <p>
+            NAFLD, viral hepatitis, cirrhosis, portal hypertension, and
+            transplant workup.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RESEARCH -->
+    <section class="sec sec-dark" id="research">
+      <div class="sl">Research &amp; Publications</div>
+      <h2 class="sh">Advancing the<br /><em>Science of Care</em></h2>
+      <div class="rsg">
+        <div class="rsc">
+          <span class="rsn">815+</span><span class="rsl">Citations</span>
+        </div>
+        <div class="rsc">
+          <span class="rsn">10+</span><span class="rsl">Yrs Research</span>
+        </div>
+        <div class="rsc">
+          <span class="rsn">IBD</span><span class="rsl">Primary Focus</span>
+        </div>
+        <div class="rsc">
+          <span class="rsn">NEJM</span><span class="rsl">Published In</span>
+        </div>
+      </div>
+      <p style="font-size: 0.78rem; opacity: 0.55; margin-bottom: 0.4rem">
+        Published in leading journals:
+      </p>
+      <div class="jc">
+        <span class="jch"
+          ><span class="d"></span>New England Journal of Medicine</span
+        >
+        <span class="jch"><span class="d"></span>Gut</span>
+        <span class="jch"
+          ><span class="d"></span>The Lancet Gastroenterology</span
+        >
+        <span class="jch"
+          ><span class="d"></span>Clinical Gastroenterology &amp;
+          Hepatology</span
+        >
+        <span class="jch"><span class="d"></span>Journal of Hepatology</span>
+      </div>
+      <ul class="rl">
+        <li>Fecal Microbiota Transplantation in IBD &amp; recurrent CDI</li>
+        <li>Biologic therapies in Crohn's disease and ulcerative colitis</li>
+        <li>Acute-on-chronic liver failure and plasmapheresis outcomes</li>
+        <li>Gut microbiome modulation and clinical applications</li>
+        <li>Novel endoscopic techniques in GI intervention</li>
+      </ul>
+    </section>
+
+    <!-- REVIEWS -->
+    <section class="sec sec-cream" id="reviews">
+      <div class="sl">Patient Reviews</div>
+      <h2 class="sh">What Patients<br /><em>Say</em></h2>
+      <div class="rvg">
+        <div class="rvc">
+          <div class="rvs">★★★★★</div>
+          <p class="rvt">"Gentle, cooperative and soft spoken. Best doctor."</p>
+          <div class="rvsrc">
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" /></svg
+            >Google Review
+          </div>
+        </div>
+        <div class="rvc">
+          <div class="rvs">★★★★★</div>
+          <p class="rvt">
+            "Diagnosis, treatment and behavior are praise worthy."
+          </p>
+          <div class="rvsrc">
+            <svg
+              width="11"
+              height="11"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" /></svg
+            >Google Review
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="sec" id="contact">
+      <div class="sl">Contact &amp; Appointments</div>
+      <h2 class="sh">Get in<br /><em>Touch</em></h2>
+      <div class="contact-layout">
+        <div>
+          <div class="ca">
+            <a href="tel:+918360177589" class="ca-c">
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.2"
+              >
+                <path
+                  d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.21 6.21l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17.5z"
+                />
+              </svg>
+              Call Clinic
+            </a>
+            <a
+              href="https://wa.me/918360177589?text=Hello%20Dr.%20Mahajan%2C%20I%20would%20like%20to%20book%20an%20appointment."
+              target="_blank"
+              rel="noopener"
+              class="ca-w"
+            >
+              <svg
+                width="15"
+                height="15"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"
+                />
+              </svg>
+              WhatsApp
+            </a>
+          </div>
+
+          <div class="ic">
+            <div class="icd">
+              <div class="ico">
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#f5f0e8"
+                  stroke-width="1.8"
+                >
+                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <div class="icl">Clinic Address</div>
+                <div class="icv">
+                  22-B, Block-B, Udham Singh Nagar, Tagore Nagar, Ludhiana
+                  141001
+                </div>
+              </div>
+            </div>
+            <div class="icd">
+              <div class="ico">
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#f5f0e8"
+                  stroke-width="1.8"
+                >
+                  <circle cx="12" cy="12" r="10" />
+                  <polyline points="12 6 12 12 16 14" />
+                </svg>
+              </div>
+              <div>
+                <div class="icl">Clinic Hours</div>
+                <div class="icv">
+                  Opens 5:00 PM<br /><small style="color: var(--muted)"
+                    >Appt. calls: 9am–5pm</small
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="icd">
+              <div class="ico">
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#f5f0e8"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.1a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.21 6.21l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 17.5z"
+                  />
+                </svg>
+              </div>
+              <div>
+                <div class="icl">Phone</div>
+                <div class="icv">
+                  <a href="tel:+918360177589">+91 83601 77589</a>
+                </div>
+              </div>
+            </div>
+            <div class="icd">
+              <div class="ico">
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="#f5f0e8"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                  />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div>
+                <div class="icl">Email</div>
+                <div class="icv">
+                  <a href="mailto:dr_ramit_mahajan@dmch.edu"
+                    >dr_ramit_mahajan@dmch.edu</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mw">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3422.7!2d75.8573!3d30.9010!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391a834a0e2aeb37%3A0xe8d0ce72b1ecec52!2sDr.%20Ramit%20Mahajan!5e0!3m2!1sen!2sin!4v1"
+              width="100%"
+              height="220"
+              style="border: 0; display: block"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Clinic map"
+            ></iframe>
+          </div>
+          <a
+            href="https://maps.google.com/?q=22-B,+Block-B,+Udham+Singh+Nagar,+Tagore+Nagar,+Ludhiana,+Punjab+141001"
+            target="_blank"
+            rel="noopener"
+            class="ml"
+          >
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Open in Google Maps →
+          </a>
+        </div>
+
+        <div class="af">
+          <h3>Request an Appointment</h3>
+          <div class="fg">
+            <label>Full Name</label
+            ><input
+              type="text"
+              placeholder="Your full name"
+              autocomplete="name"
+            />
+          </div>
+          <div class="fg">
+            <label>Phone Number</label
+            ><input
+              type="tel"
+              placeholder="+91 98765 43210"
+              autocomplete="tel"
+            />
+          </div>
+          <div class="fg">
+            <label>Email Address</label
+            ><input
+              type="email"
+              placeholder="you@example.com"
+              autocomplete="email"
+            />
+          </div>
+          <div class="fg">
+            <label>Reason for Visit</label>
+            <select>
+              <option value="">Select a condition / concern</option>
+              <option>Inflammatory Bowel Disease (IBD)</option>
+              <option>Liver Disease / Hepatology</option>
+              <option>Advanced GI Endoscopy</option>
+              <option>Fecal Microbiota Transplantation (FMT)</option>
+              <option>Functional GI Disorders (IBS / GERD)</option>
+              <option>Second Opinion / Referral</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label>Additional Notes</label
+            ><textarea
+              placeholder="Describe your symptoms or relevant medical history…"
+            ></textarea>
+          </div>
+          <button
+            class="fs"
+            onclick="
+              alert(
+                'Thank you! We will contact you shortly to confirm your appointment.',
+              )
+            "
+          >
+            Submit Request
+          </button>
+          <div class="fa">
+            Or call us directly —
+            <a href="tel:+918360177589" style="color: var(--forest)"
+              >8360177589</a
+            >
+            ·
+            <a
+              href="https://wa.me/918360177589"
+              target="_blank"
+              rel="noopener"
+              style="color: var(--wa)"
+              >WhatsApp</a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <strong>Dr. Ramit Mahajan — Gastroenterology &amp; Hepatology</strong>
+      PMC Reg. No. 35491 · Tagore Nagar, Ludhiana · © 2025 ·
+      <a href="tel:+918360177589">📞 8360177589</a> ·
+      <a href="https://wa.me/918360177589" target="_blank" rel="noopener"
+        >WhatsApp</a
+      >
+      ·
+      <a class="fe" href="mailto:dr_ramit_mahajan@dmch.edu"
+        >dr_ramit_mahajan@dmch.edu</a
+      >
+    </footer>
+  </body>
+</html>
